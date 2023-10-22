@@ -1,0 +1,1 @@
+const circle1 = document.getElementById('circle1');

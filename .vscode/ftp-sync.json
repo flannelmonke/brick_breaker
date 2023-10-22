@@ -1,0 +1,27 @@
+{
+    "remotePath": "/htdocs/",
+    "host": "ftpupload.net",
+    "username": "if0_34854439",
+    "password": "fWNJ8bjnK4Yuxi0",
+    "port": 21,
+    "secure": true,
+    "protocol": "ftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "agent": null,
+    "allow": [],
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "extensionsToInclude": [
+            ""
+        ],
+        "path": ""
+    }
+}
