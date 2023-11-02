@@ -2,13 +2,29 @@
     margin: 0;
     padding: 0; 
 }
-body{
+#poop{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     background-color: black;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Horizontally center the items within the flex container */
+    align-items: center; /* Vertically center the items within the flex container */
+}
+.center-container, .canvas-container {
+    text-align: center;
+}
+
+.center-container ul {
+    list-style-type: none;
+    margin: 10px;
+    padding: 10px;
 }
 /* #canvas{
     position: relative;

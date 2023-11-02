@@ -7,7 +7,25 @@
     <title>Brick Breaker</title>
 </head>
 <body>
-    <canvas id="canvas" style="position:relative; border: 1px solid white; align-self:center;" width="750px" height="500px"></canvas>    
+<div id="poop">
+    <div class="center-container">
+        <ul>
+            <li>
+                <button style="margin: 10px;padding:10px" id="butt">START!</button>
+            </li>
+            <li>
+                <canvas id="canvas" style="position:relative; border: 1px solid white; align-self:center;" width="750px" height="500px"></canvas>
+            </li>
+        </ul>
+    </div>
+    <div style="display: none;">
+        <img id="stage1" src="./assets/stage1.png">
+        <img id="stage2" src="./assets/stage2.png">
+        <img id="stage3" src="./assets/stage3.png">
+        <img id="stage4" src="./assets/stage4.png">
+    </div>  
+</div>
+    
 </body>
 <script type="module" src="/modules/playerClass.js"></script>
 <script type="module" src="script.js"></script>

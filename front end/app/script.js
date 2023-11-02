@@ -1,44 +1,42 @@
 import { Player } from "./modules/playerClass.js";
 
-const canvas = document.getElementById('canvas');
-const context = canvas.getContext('2d');
+//declare canvas variable
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
 
-const blocks = canvas.getContext('2d');
+//declare player instance
 const dipshit = new Player("dipshit", context);
-
-// blocks.fillStyle = "#FFFFFF";
-// var x = 525;
-// var y = 475;
-// blocks.fillRect(x,y, 100, 25);
-
 dipshit.draw();
 
-// var keymap = {"left":false, "right":false};
+//make a context for bricks
+const brick = canvas.getContext("2d");
 
-window.addEventListener("keydown", event=>{
-    if(event.key === "a" || event.key === "A"){
-        dipshit.keymap.left = true;
-    }
-    if(event.key === "d" || event.key === "D"){
-        dipshit.keymap.right = true;
-    }  
-    if(dipshit.keymap.right === true){
-        var animID = requestAnimationFrame(dipshit.animate(dipshit.moveRight()));
-    }
-    if(dipshit.keymap.left === true){
-        var animID = requestAnimationFrame(function mov(){
-            dipshit.moveLeft();
-            requestAnimationFrame(mov());
-        });
-    }
-});
-window.addEventListener("keyup", event=>{
-    if(event.key === "a" || event.key === "A"){
-        dipshit.keymap.left =false;
-    }
-    if(event.key === "d" || event.key === "D"){
-        dipshit.keymap.right =false;
-    }
-    if(dipshit.keymap.right === false){cancelAnimationFrame(animID);}
-    console.log("up");
+window.addEventListener("keydown", (event) => {
+  var poop;
+  var crap;
+
+  switch (event.key) {
+    case "a":
+    case "A":
+      var poop = setInterval(() => {
+        dipshit.moveLeft();
+      }, 1);
+      window.addEventListener("keyup", (event) => {
+        if (event.key === "a" || event.key === "A") {
+          clearInterval(poop);
+        }
+      });
+      break;
+    case "d":
+    case "D":
+      var crap = setInterval(() => {
+        dipshit.moveRight();
+      }, 1);
+      window.addEventListener("keyup", (event) => {
+        if (event.key === "d" || event.key === "D") {
+          clearInterval(crap);
+        }
+      });
+      break;
+  }
 });
