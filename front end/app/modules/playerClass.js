@@ -3,7 +3,7 @@ export class Player {
     this.id = id;
     this.context = context;
     this.x = 325;
-    this.y = 475;
+    this.y = 500;
     this.style = "#FFFFFF";
   }
 
@@ -15,7 +15,7 @@ export class Player {
     if (this.x === 0) {
       return;
     } else {
-      this.context.reset();
+      this.context.clearRect(this.x, this.y,100, 25);
       this.x -= 1;
       this.draw();
     }
@@ -24,7 +24,7 @@ export class Player {
     if (this.x === 750 - 100) {
       return;
     } else {
-      this.context.reset();
+      this.context.clearRect(this.x, this.y,100, 25);
       this.x += 1;
       this.draw();
     }
