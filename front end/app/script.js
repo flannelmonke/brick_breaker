@@ -1,51 +1,48 @@
 import { Player } from "./modules/playerClass.js";
 import { brickGroups } from "./modules/brickClass.js";
-// //declare canvas variable
+// //declare canvas variables
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
-//brick layout
-//declare player instance
-const dipshit = new Player("dipshit", context);
-dipshit.draw();
-
-//declare brick context
-const brick = canvas.getContext("2d");
+//declare player reference (currently null)
+var dipshit;
 
 //start button script
 const button = (document.getElementById("butt").onclick = () => {
-  var groupEZ = new brickGroups("easy", brick);
-  groupEZ.fuckBricks();
-  dipshit.draw();
+  var groupEZ = new brickGroups("easy", context); 
+  dipshit = new Player("dipshit", context); //initialize player reference
+  groupEZ.fuckBricks(); //create array of bricks depending on difficulty (currently only easy mode)
+  dipshit.draw(); //draw/reset player
 });
 
 //player movement event listener. moves at n m/s
 window.addEventListener("keydown", (event) => {
-  var poop;
-  var crap;
+  var poop; //left interval ID for clearing
+  var crap; //right interval ID also for clearing
 
   switch (event.key) {
+    //denote both lower and upper case incase player has caps lock on
     case "a":
     case "A":
+      //set interval for the movement event. Current speed at 
       var poop = setInterval(() => {
         dipshit.moveLeft();
-      }, 1);
+      });
       //listener for when to stop moving
-      window.addEventListener("keyup", (event) => {
-        if (event.key === "a" || event.key === "A") {
-          clearInterval(poop);
-        }
-      });
       break;
-    case "d":
-    case "D":
-      var crap = setInterval(() => {
-        dipshit.moveRight();
-      }, 1);
-      window.addEventListener("keyup", (event) => {
-        if (event.key === "d" || event.key === "D") {
-          clearInterval(crap);
+      case "d":
+          var crap = setInterval(() => {
+            dipshit.moveRight();
+          },1);
+          break;
         }
-      });
-      break;
-  }
+        window.addEventListener("keyup", (event) => {
+          if (event.key === "d" || event.key === "D") {
+            clearInterval(crap);
+          }
+        });
+        window.addEventListener("keyup", (event) => {
+          if (event.key === "a" || event.key === "A") {
+            clearInterval(poop);
+          }
+        });
 });
