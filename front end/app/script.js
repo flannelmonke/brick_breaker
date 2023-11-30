@@ -1,16 +1,20 @@
 import { Player } from "./modules/playerClass.js";
 import { brickGroups } from "./modules/brickClass.js";
-// //declare canvas variables
+import { ball } from "./modules/ballClass.js";
+
+//declare canvas variables
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
+
 //declare player reference (currently null)
 var dipshit;
-
+// var fuck_face = new ball(context); 
 //start button script
 const button = (document.getElementById("butt").onclick = () => {
   var groupEZ = new brickGroups("easy", context); 
   dipshit = new Player("dipshit", context); //initialize player reference
-  groupEZ.fuckBricks(); //create array of bricks depending on difficulty (currently only easy mode)
+  // fuck_face.draw();
+  // groupEZ.fuckBricks(); //create array of bricks depending on difficulty (currently only easy mode)
   dipshit.draw(); //draw/reset player
 });
 

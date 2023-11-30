@@ -12,7 +12,7 @@ export class Player {
     this.context.fillRect(this.x, this.y, 100, 25);
   }
   moveLeft() {
-    if (this.x === 0) {
+    if (this.x <= 0) {
       return;
     } else {
       this.context.clearRect(this.x, this.y,100.5, 25);
@@ -26,7 +26,7 @@ export class Player {
     const positionX = this.lerp( 0, 1 , alpha);
     // console.log("pos x"+positionX);
     // console.log("alpha"+alpha); 
-    if (this.x === 800 - 100) {
+    if (this.x >= 800 - 100) {
       return;
     } else {
       this.context.clearRect(this.x-1 , this.y,101, 25);
