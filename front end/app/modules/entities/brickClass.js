@@ -1,5 +1,5 @@
 import { Player } from "./playerClass.js";
-export const states = [
+const states = [
   null,
   document.getElementById("stage1"),
   document.getElementById("stage2"),
@@ -12,7 +12,7 @@ export class Brick extends Player {
     super();
     this.id = id;
     this.context = context; //should be using a different context so it doesn't mess with the player animations
-    this.x = x; //coordinates algorithm to be added
+    this.x = x; 
     this.y = y;
     this.style = style; // randomly generated color
     this.state = 1;
@@ -22,32 +22,31 @@ export class Brick extends Player {
     this.context.strokeStyle = this.style;
     this.context.drawImage(states[this.state], this.x, this.y, 100, 25);
   }
-  
 }
 
 export class brickGroups {
-  constructor(difficulty, context){
+  constructor(difficulty, context) {
     this.brickPlace = [[], [], [], [], [], [], [], [], [], [], [], [], [], []];
+    this.brickMap = []
     this.context = context;
-    switch(difficulty){
+    switch (difficulty) {
       case "easy":
         this.brickCapper = 37;
-      break;
+        break;
       case "medium":
-        this.brickCapper=  74;
-      break;
+        this.brickCapper = 74;
+        break;
       case "hard":
         this.brickCapper = 112;
-      break;
+        break;
     }
   }
-  //this is strictly an initialization function. It should not be used mid game or else data will be lost.
-  fuckBricks(){
+  // game initialization function creates a fuck ton of bricks
+  fuckBricks() {
     this.context.reset();
     let row = 14;
     let col = 8;
-    let pop = 0;
-    //set our limit for how many bricks we can draw on easy mode
+    let pop = 0; //this is our limit
 
     //loop for our rows
     for (var i = 0; i < row; i++) {
@@ -57,19 +56,20 @@ export class brickGroups {
         if (pop == this.brickCapper) {
           break;
         }
-        //0 or 1. true or false. Not the worst odds... 
+        //0 or 1. true or false. Not the worst odds...
         else if (Math.floor(Math.random() * 2) == 0) {
           continue;
         }
-        // welp its not 0, not false, not past our limit... GO! 
+        // welp its not 0, not false, not past our limit... GO!
         else {
           this.brickPlace[i][j] = new Brick(
             0,
             this.context,
-            (j * 100),
-            (i * 25),
-            "#FFFFFF"
+            j * 100,
+            i * 25,
+            "#000000"
           );
+          this.brickMap[pop] = this.brickPlace[i][j]
           this.brickPlace[i][j].draw();
           pop++;
         }
