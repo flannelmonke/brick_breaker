@@ -1,5 +1,5 @@
 import { Player } from "./playerClass.js";
-export const states = [
+const states = [
   null,
   document.getElementById("stage1"),
   document.getElementById("stage2"),
@@ -12,7 +12,7 @@ export class Brick extends Player {
     super();
     this.id = id;
     this.context = context; //should be using a different context so it doesn't mess with the player animations
-    this.x = x; //coordinates algorithm to be added
+    this.x = x;
     this.y = y;
     this.style = style; // randomly generated color
     this.state = 1;
@@ -30,6 +30,7 @@ export class Brick extends Player {
 export class brickGroups {
   constructor(difficulty, context) {
     this.brickPlace = [[], [], [], [], [], [], [], [], [], [], [], [], [], []];
+    this.brickMap = [];
     this.context = context;
     switch (difficulty) {
       case "easy":
@@ -38,8 +39,11 @@ export class brickGroups {
       case "medium":
         this.brickCapper = 74;
         break;
+        this.brickCapper = 74;
+        break;
       case "hard":
         this.brickCapper = 112;
+        break;
         break;
     }
     this.brick_index = [];
