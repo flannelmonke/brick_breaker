@@ -24,9 +24,12 @@ export class Player {
     if (this.x >= 800 - 100) {
       return;
     } else {
-      this.context.clearRect(this.x-1 , this.y,101, 25);
-      this.x += positionX;
+      this.context.clearRect(this.x - 1, this.y, 101, 25);
+      this.x += 0.5;
       this.draw();
     }
+  }
+  getCords() {
+    return [this.x, this.y, this.x + 100, this.y + 25];
   }
 }

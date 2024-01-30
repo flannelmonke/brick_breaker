@@ -22,32 +22,34 @@ export class Brick extends Player {
     this.context.strokeStyle = this.style;
     this.context.drawImage(states[this.state], this.x, this.y, 100, 25);
   }
-  
+  getCords() {
+    return [this.x, this.y, this.x + 100, this.y + 25];
+  }
 }
 
 export class brickGroups {
-  constructor(difficulty, context){
+  constructor(difficulty, context) {
     this.brickPlace = [[], [], [], [], [], [], [], [], [], [], [], [], [], []];
     this.context = context;
-    switch(difficulty){
+    switch (difficulty) {
       case "easy":
         this.brickCapper = 37;
-      break;
+        break;
       case "medium":
-        this.brickCapper=  74;
-      break;
+        this.brickCapper = 74;
+        break;
       case "hard":
         this.brickCapper = 112;
-      break;
+        break;
     }
+    this.brick_index = [];
   }
   //this is strictly an initialization function. It should not be used mid game or else data will be lost.
-  fuckBricks(){
+  fuckBricks() {
     this.context.reset();
     let row = 14;
     let col = 8;
-    let pop = 0;
-    //set our limit for how many bricks we can draw on easy mode
+    let pop = 0; //this is our limit
 
     //loop for our rows
     for (var i = 0; i < row; i++) {
@@ -57,21 +59,23 @@ export class brickGroups {
         if (pop == this.brickCapper) {
           break;
         }
-        //0 or 1. true or false. Not the worst odds... 
+        //0 or 1. true or false. Not the worst odds...
         else if (Math.floor(Math.random() * 2) == 0) {
           continue;
         }
-        // welp its not 0, not false, not past our limit... GO! 
+        // welp its not 0, not false, not past our limit... GO!
         else {
           this.brickPlace[i][j] = new Brick(
             0,
             this.context,
-            (j * 100),
-            (i * 25),
-            "#FFFFFF"
+            j * 100,
+            i * 25,
+            "#000000"
           );
+
           this.brickPlace[i][j].draw();
           pop++;
+          this.brick_index[pop] = this.brickPlace[i][j];
         }
       }
     }
