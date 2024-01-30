@@ -30,9 +30,10 @@ window.addEventListener("keydown", (event) => {
       //set interval for the movement event. Current speed at 
       var poop = setInterval(() => {
         dipshit.moveLeft();
-      });
+      },1);
       //listener for when to stop moving
       break;
+      case "D":
       case "d":
           var crap = setInterval(() => {
             dipshit.moveRight();
